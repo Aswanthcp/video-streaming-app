@@ -9,10 +9,14 @@ class ChannelSerializer(serializers.ModelSerializer):
 
 
 class VideoSerializer(serializers.ModelSerializer):
+    channel = ChannelSerializer() 
     class Meta:
         model = Video
-        fields = ["id", "channel", "title", "description", "video_file", "thumbnail"]
+        fields = ["id", "channel", "title", "description", "video_file", "thumbnail","durations"]
         read_only_fields = ["id", "created_at", "views"]
+        
+
+        
 
     def update(self, instance, validated_data):
 
