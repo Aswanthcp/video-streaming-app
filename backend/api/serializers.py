@@ -1,11 +1,28 @@
 from rest_framework import serializers
 from api.models import Channel, Video
 
+from django.contrib.auth.models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["username", "password"]
+        extra_kwargs = {"password": {"write_only": True}}
+
+    def create(self, validated_data):
+      
+        user = User.objects.create_user(
+            username=validated_data["username"], password=validated_data["password"]
+        )
+        return user
+
 
 class ChannelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Channel
-        fields = "__all__"
+        fields = ["id", "owner", "channel_name", "description"]
+        extra_kwargs = {"owner": {"read_only": True}}
 
 
 class VideoSerializer(serializers.ModelSerializer):
@@ -23,7 +40,7 @@ class VideoSerializer(serializers.ModelSerializer):
             "durations",
             "views",
         ]
-        read_only_fields = ["id", "created_at", "views"]
+        read_only_fields = ["id", "created_at", "channel"]
 
     def update(self, instance, validated_data):
 
