@@ -40,25 +40,26 @@ const VideoGallery = () => {
         console.error("There was an error fetching the videos!", error);
       });
   };
+
   useEffect(() => {
     getVideo();
     getVIdeobyID();
   }, []);
 
   return (
-    <div className="flex">
-      <Sidebar />
+    <div className="flex min-h-screen">
+      <Sidebar className="hidden md:block md:w-1/4 lg:w-1/5" />
       <div className="flex-1">
         <Header />
-        <div className="grid grid-cols-3 gap-4 p-6">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-6">
+          <div className="lg:col-span-2">
             <VideoPlayer
               video={activeVid}
               title={actTitle}
               description={description}
             />
           </div>
-          <div className="">
+          <div className="lg:col-span-1">
             <RecommentionList videos={videos} />
           </div>
         </div>

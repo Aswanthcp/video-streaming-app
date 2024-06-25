@@ -11,7 +11,7 @@ const VideoListComponents = ({ videos }) => {
               key={index}
               id={video.id}
               title={video.title}
-              channel={video.channel.name}
+              channel={video.channel.channel_name}
               views={video.views}
               duration={video.durations}
               thumbnail={`http://localhost:8000/${video.thumbnail}`}
