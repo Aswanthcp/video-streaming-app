@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import VideoPlayer from "../components/VideoPlayer";
+import { useParams } from "react-router-dom";
+
+import axios from "../utils/axios";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { useParams } from "react-router-dom";
-import axios from "../utils/axios";
-import { getVideoURL } from "../utils/Constants"; // Assuming you have this file configured properly
-import RecommentionList from "../components/RecommentionList";
+import VideoPlayer from "../components/videos/VideoPlayer";
+import { getVideoURL } from "../utils/Constants";
+import RecommentionList from "../components/videos/RecommentionList";
 
 const VideoGallery = () => {
   const [activeVid, setActiveVid] = useState(null);

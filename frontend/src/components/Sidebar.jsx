@@ -7,6 +7,8 @@ import {
   Paperclip,
   Brush,
   Wrench,
+  LogOutIcon,
+  TvMinimalPlay,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -43,15 +45,10 @@ function Sidebar() {
               </Link>
             </div>
             <div className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700">
-              <Paperclip className="h-5 w-5" aria-hidden="true" />
-              <Link to="/">
-                <span className="mx-2 text-sm font-medium">WatchList</span>
+              <TvMinimalPlay className="h-5 w-5" aria-hidden="true" />
+              <Link to="/channel">
+                <span className="mx-2 text-sm font-medium">Channel</span>
               </Link>
-            </div>
-
-            <div className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700">
-              <BellRing className="h-5 w-5" aria-hidden="true" />
-              <span className="mx-2 text-sm font-medium">Notifications</span>
             </div>
           </div>
 
@@ -66,6 +63,12 @@ function Sidebar() {
             <div className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700">
               <Wrench className="h-5 w-5" aria-hidden="true" />
               <span className="mx-2 text-sm font-medium">Setting</span>
+            </div>
+            <div className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700">
+              <LogOutIcon className="h-5 w-5" aria-hidden="true" />
+              <Link to="/logout">
+                <span className="mx-2 text-sm font-medium">Logout</span>
+              </Link>
             </div>
           </div>
         </nav>

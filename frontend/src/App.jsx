@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import VideoList from "./pages/VideoList";
 import VideoGallery from "./pages/VideoGallery";
 import NotFound from "./pages/NotFound";
@@ -8,6 +8,8 @@ import Register from "./pages/Register";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "./auth/Redux/authReducer";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ChannelDetail from "./pages/ChannelDetail";
+import ChannelCreate from "./components/channels/ChannelCreate";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,11 +32,20 @@ const App = () => {
       <Route path="/register" element={<RegisterAndLogout />} />
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<VideoList />} />
+      <Route path="/videos/:id" element={<VideoGallery />} />
       <Route
-        path="/videos/:id"
+        path="/channel"
         element={
           <ProtectedRoute>
-            <VideoGallery />
+            <ChannelDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/channel/add"
+        element={
+          <ProtectedRoute>
+            <ChannelCreate />
           </ProtectedRoute>
         }
       />

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import VideoListComponents from "../components/VidoeListComponents";
+import VideoListComponents from "../components/videos/VidoeListComponents";
 import axios from "../utils/axios";
 import { getVideoURL } from "../utils/Constants";
-
+VideoListComponents;
 const VideoList = () => {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
